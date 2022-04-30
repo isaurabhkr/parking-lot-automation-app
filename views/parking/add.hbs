@@ -1,0 +1,31 @@
+<h3>New Parking Booking</h3>
+<div class="row">
+    <form action="/parking" method="POST" class="col s12">
+
+        <div class="row">
+            <div class="input-field">
+                <h8>Are you differently abled or pregnant?</h8>
+                <select id="status" name="isReserved">
+                    <option value="Yes" selected>Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label for="isReserved">Reserved</label>
+            </div>
+        </div>
+
+    {{!-- <div class="row">
+    <div class="input-field">
+    <h8>Choose the booking time:</h8>
+    <label for="bookingTime">Time</label>
+    <input type="datetime-local" id="bookingTime"
+        name="bookingTime" 
+        max={{maxBookingTime}}/>
+      </div>
+    </div> --}}
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>

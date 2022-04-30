@@ -1,0 +1,47 @@
+<h6>Dashboard</h6>
+<h3>Welcome {{name}}</h3>
+<p>Here are your parking booking details:</p>
+<p>If the booking is expired and the vehicle is not parked then the booking will be deleted and slot will be free for next user.</p>
+
+{{#if parking}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Parking Spot</th>
+             <th>Time of Booking</th>
+            <th>Booking is valid from</th>
+            <th>Booking is valid till</th>
+            <th>Reserved Parking</th>
+            <th>Occupied</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each parking}}
+        <tr>
+            <td><span class="dash-status">{{parkingSpot}}</span></td>
+             <td>{{formatDate createdAt 'YYYY-MM-DD hh:mm:ss'}}</td>
+            <td>{{formatDate bookingTime 'YYYY-MM-DD hh:mm:ss'}}</td>
+            <td>{{formatDate ExpiryTime 'YYYY-MM-DD hh:mm:ss'}}</td>
+            <td><span class="dash-status">{{isReserved}}</span></td>
+            <td><span class="dash-status">{{isParked}}</span></td>
+            <td>
+                <a href="/parking/occupy/{{_id}}" class="btn btn-float">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <form action="/parking/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<br>
+<p>Oops!, You don't have a valid parking booking</p>
+{{/if}}

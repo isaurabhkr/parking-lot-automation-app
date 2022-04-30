@@ -1,0 +1,22 @@
+<h3>Occupy Parking Booking</h3>
+<div class="row">
+    <form action="/parking/{{booking._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+
+        <div class="row">
+            <div class="input-field">
+                <h8>Have you parked your vehicle in the designated spot?</h8>
+                <select id="status" name="isParked">
+                    <option value="Yes" selected>Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label for="isParked">Parked</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
